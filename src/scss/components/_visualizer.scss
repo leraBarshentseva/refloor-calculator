@@ -187,16 +187,4 @@
             border-color: $color-red transparent transparent transparent;
         }
     }
-
-    @keyframes tooltipFadeIn {
-        from {
-            opacity: 0;
-            transform: translate(-50%, 10px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translate(-50%, 0);
-        }
-    }
 }
