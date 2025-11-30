@@ -47,7 +47,7 @@
         align-items: center;
         border-bottom: 1px solid $color-grey-300;
         margin-bottom: $space-m;
-        padding-bottom: $space-s;
+        padding-bottom: $space-m;
     }
 
     &__reset-btn {
@@ -190,6 +190,7 @@
         display: block;
         font-size: $space-ssm;
         padding: $space-s $space-l;
+        margin-top: $space-s;
         border-radius: $space-xs;
         border: 1px solid $color-border;
         cursor: pointer;
