@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/refloor-calculator/assets/favicon-32x32-DoggHIjX.png" sizes="32x32" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Калькулятор напольных покрытий</title>
+  <script type="module" crossorigin src="/refloor-calculator/assets/index-C4vX3AFk.js"></script>
+  <link rel="stylesheet" crossorigin href="/refloor-calculator/assets/index-DEPh9KCt.css">
+</head>
+
+<body>
+  <main class="page-content">
+    <h1>Калькулятор напольных покрытий</h1>
+    <div class="calculator">
+      <div class="calculator__wrapper">
+
+        <section class="calculator__body">
+          <form class="calculator__form">
+            <fieldset class="calculator__section">
+              <div class="calculator__section-header">
+                <legend class="calculator__title">Параметры комнаты</legend>
+                <button type="button" class="calculator__reset-btn" title="Сбросить все и начать заново"
+                  aria-label="Сбросить калькулятор">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 48.678 48.678 0 0 0-7.324 0 4.006 4.006 0 0 0-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 0 0 3.7 3.7 48.656 48.656 0 0 0 7.324 0 4.006 4.006 0 0 0 3.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3-3 3" />
+                  </svg>
+                </button>
+              </div>
+
+              <div class="calculator__parameters">
+                <div class="calculator__group">
+                  <label class="calculator__label" for="width">Ширина (м)</label>
+                  <input class="calculator__input" id="width" type="number" min="0" value="3">
+                </div>
+                <div class="calculator__group">
+                  <label class="calculator__label" for="length">Длина (м)</label>
+                  <input class="calculator__input" id="length" type="number" min="0" value="4">
+                </div>
+                <div class="calculator__buttons-panel">
+                  <button type="button" class="calculator__button calculator__button--add" data-action="add-segment">+
+                    Добавить площадь</button>
+                  <button type="button" class="calculator__button calculator__button--subtract"
+                    data-action="subtract-segment">− Вычесть площадь</button>
+                </div>
+              </div>
+
+              <div class="calculator__visualizer visualizer">
+                <div class="visualizer__brick visualizer__brick--base">
+                  <h5 class="visualizer__brick-title">Основная комната</h5>
+                  <div class="visualizer__brick-body">
+                    <div class="visualizer__brick-group">
+                      <span class="visualizer__brick-label">Ширина</span>
+                      <input class="visualizer__brick-input" id="base-brick-width" type="number" value="3.0" readonly>
+                    </div>
+                    <span>×</span>
+                    <div class="visualizer__brick-group">
+                      <span class="visualizer__brick-label">Длина</span>
+                      <input class="visualizer__brick-input" id="base-brick-length" type="number" value="4.0" readonly>
+                    </div>
+                  </div>
+                  <div class="visualizer__brick-area" id="base-brick-area">S = 12.00 м<sup>2</sup></div>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="calculator__section">
+              <legend class="calculator__title">Выберите тип покрытия</legend>
+
+              <select class="calculator__select" id="material-type" name="material_type">
+                <option value="pvc">ПВХ-плитка (LVT)</option>
+                <option value="spc-laminate">Кварц-виниловый ламинат (SPC)</option>
+                <option value="quartz-parquet">Кварц-виниловый паркет (WPC/SPC Rigid)</option>
+              </select>
+
+            </fieldset>
+            <fieldset class="calculator__section">
+              <legend class="calculator__title">Выберите способ укладки</legend>
+              <select class="calculator__select" id="laying-method" name="laying_method">
+                <option value="direct">Прямая укладка (палубная) - 5%</option>
+                <option value="diagonal">Диагональная укладка - 10%</option>
+                <option value="herringbone">Укладка «елочкой» (английская/французская) - 15%</option>
+              </select>
+            </fieldset>
+          </form>
+
+        </section>
+        <section class="calculator__calculation">
+          <div class="calculator__section-header">
+            <h2 class="calculator__title">Ваш расчет</h2>
+          </div>
+          <div class="calculator__result" aria-live="polite" aria-atomic="true">
+            <div class="calculator__item">
+              <h3 class="calculator__title-item">Площадь комнаты:</h3>
+              <span class="calculator__result-item" id="result-area"></span>
+            </div>
+            <div class="calculator__item">
+              <h3 class="calculator__title-item">Запас:</h3>
+              <span class="calculator__result-item" id="result-waste"></span>
+            </div>
+            <div class="calculator__separator"></div>
+            <div class="calculator__item">
+              <h3 class="calculator__title-item">В упаковке:</h3>
+              <span class="calculator__result-item" id="result-pack-size">0 м²</span>
+            </div>
+            <div class="calculator__item">
+              <h3 class="calculator__title-item">Нужно упаковок:</h3>
+              <span class="calculator__result-item" id="result-pack-count">0 шт.</span>
+            </div>
+            <div class="calculator__separator"></div>
+            <div class="calculator__item">
+              <h3 class="calculator__title-item">Общая площадь материала:</h3>
+              <span class="calculator__result-item" id="result-material"></span>
+            </div>
+            <div class="calculator__item">
+              <h3 class="calculator__title-item">Цена за м²</h3>
+              <span class="calculator__result-item" id="result-price-per-meter"></span>
+            </div>
+            <div class="calculator__item calculator__item--total">
+              <h3 class="calculator__title-item">Итоговая стоимость:</h3>
+              <span class="calculator__result-item" id="result-total-price"></span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
