@@ -6,7 +6,7 @@
 
 ---
 
-![Скриншот калькулятора](https://github.com/leraBarshentseva/refloor-calculator/public/screen/calc.png) 
+![Скриншот калькулятора](https://github.com/leraBarshentseva/refloor-calculator/blob/main/public/screen/calc.png) 
 
 ---
 
