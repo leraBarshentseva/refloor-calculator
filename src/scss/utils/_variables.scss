@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $space-xs: .25rem;
 $space-s: .5rem;
 $space-sm: .8rem;
@@ -50,8 +52,8 @@ $color-title-secondary: $color-brown-espresso;
 $color-background-body: $color-grey-100;
 $color-background-card: $color-white;
 
-$color-background-room-add: lighten($color-green-lime, 35%);
-$color-background-room-remove: lighten($color-red, 35%);
+$color-background-room-add: color.adjust($color-green-lime, $lightness: 35%);
+$color-background-room-remove: color.adjust($color-red, $lightness: 35%);
 
 $color-background-button-add: $color-green-olive;
 $color-background-button-subtract: $color-grey-500;
