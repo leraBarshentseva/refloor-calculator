@@ -1,0 +1,15 @@
+@use '../utils/variables' as *;
+
+.page-content {
+    margin: $space-xl auto;
+    max-width: $max-width-layout;
+    padding: 0 $space-m;
+
+    h1 {
+        font-size: $font-size-main-title;
+        font-weight: $font-weight-bold;
+        padding-bottom: $space-xl;
+        color: $color-title-primary;
+        text-align: center;
+    }
+}

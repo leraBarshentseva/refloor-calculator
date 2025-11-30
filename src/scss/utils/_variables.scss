@@ -1,0 +1,72 @@
+$space-xs: .25rem;
+$space-s: .5rem;
+$space-sm: .8rem;
+$space-ssm: .9em;
+$space-m: 1rem;
+$space-sl: 1.25rem;
+$space-l: 1.5rem;
+$space-xl: 2rem;
+$space-sxl: 3rem;
+$space-sxxl: 4rem;
+$space-xxl: 5rem;
+$space-xxxl: 10rem;
+
+$max-width-layout: 82rem;
+$font-family-brand: 'PT Sans Caption', 'PT Sans', sans-serif;
+
+$font-family-base: $font-family-brand;
+
+$font-size-base: $space-m;
+$font-size-main-title: $space-l;
+$font-size-title: $space-l;
+$font-size-button: $space-sm;
+
+$line-height-base: 1.5;
+
+$font-weight-normal: 400;
+$font-weight-bold: 600;
+
+$color-green-olive: #A6B96D;
+$color-green-lime: #8CCB5E;
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-red: #ff0000;
+
+$color-brown-espresso: #3f2512;
+
+$color-grey-100: #F8F8F8;
+$color-grey-200: #F0F0F0;
+$color-grey-300: #D1D1D1;
+$color-grey-500: #666666;
+$color-grey-800: #343a40;
+
+$color-text-base: $color-grey-800;
+$color-text-secondary: $color-grey-500;
+
+$color-title-primary: $color-brown-espresso;
+$color-title-secondary: $color-brown-espresso;
+
+$color-background-body: $color-grey-100;
+$color-background-card: $color-white;
+
+$color-background-room-add: lighten($color-green-lime, 35%);
+$color-background-room-remove: lighten($color-red, 35%);
+
+$color-background-button-add: $color-green-olive;
+$color-background-button-subtract: $color-grey-500;
+
+$color-accent-primary: $color-green-lime;
+$color-accent-secondary: $color-green-olive;
+$color-accent-remove: $color-red;
+
+$color-border: $color-grey-300;
+
+$color-focus-outline: $color-green-lime;
+
+$color-text-button-add: $color-white;
+
+$text-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
+$card-shadow: 0 4px 20px rgba(63, 37, 18, 0.08);
+
+$container-min-height: $space-xxxl;

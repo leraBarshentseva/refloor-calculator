@@ -1,0 +1,202 @@
+@use '../utils/variables' as *;
+@use '../utils/animations' as *;
+@use '../utils/mixins' as *;
+
+.visualizer {
+    position: relative;
+    display: grid;
+    grid-template-columns: 100%;
+    align-items: start;
+    gap: $space-sl;
+    min-height: $container-min-height;
+    background-color: $color-grey-100;
+    border-radius: $space-xs;
+    padding: $space-m;
+
+    @media (min-width: 65rem) {
+        grid-template-columns: repeat(auto-fill, minmax(234px, 1fr));
+    }
+
+
+    &__brick {
+        position: relative;
+        border: 2px dotted transparent;
+        display: flex;
+        flex-direction: column;
+        padding: $space-s;
+        border-radius: $space-xs;
+        gap: $space-m;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+
+        &.is-error {
+            animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+        }
+
+        &.is-deleting {
+            animation: brickPopOut 0.3s ease forwards;
+            pointer-events: none;
+        }
+
+        &.is-appearing {
+            animation: brickPopIn 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        &--base {
+            border-color: $color-grey-300;
+            background-color: rgba($color-grey-300, .1);
+        }
+
+        &--add {
+            border-color: $color-accent-primary;
+            background-color: rgba($color-accent-primary, .1);
+        }
+
+        &--remove {
+            border-color: $color-accent-remove;
+            background-color: rgba($color-accent-remove, .1);
+        }
+    }
+
+    &__brick-title {
+        text-align: center;
+        border-bottom: 1px solid $color-grey-300;
+        padding-bottom: $space-s;
+        color: $color-text-secondary;
+    }
+
+    &__brick-body {
+        display: flex;
+        gap: $space-s;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__brick-label {
+        font-size: $space-sm;
+        color: $color-text-secondary;
+    }
+
+    &__brick-input {
+        width: $space-sxl;
+        border: none;
+        border-bottom: 1.5px solid $color-border;
+        background: transparent;
+        text-align: center;
+        font-family: $font-family-base;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-base;
+        padding: $space-xs;
+        outline: none;
+
+        @extend %focus-input-style;
+    }
+
+    &__brick-area {
+        padding: $space-xs;
+        text-align: center;
+        background-color: $color-white;
+        border-radius: $space-xs;
+    }
+
+    &__brick-remove {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: $color-grey-500;
+        border-radius: 50%;
+        width: $space-l;
+        height: $space-l;
+        border: 0;
+        font-size: $space-sl;
+        font-weight: $font-weight-normal;
+        cursor: pointer;
+        color: $color-white;
+        transform: translate(50%, -50%) scale(1) rotate(0deg);
+        transition: transform .4s;
+
+        &:hover {
+            transform: translate(50%, -50%) scale(1.3) rotate(180deg);
+        }
+
+        &:focus-visible {
+            outline: 2px solid $color-text-base;
+            outline-offset: 1px;
+        }
+    }
+
+    &__brick-group {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    &__label {
+        position: absolute;
+        font-size: .7rem;
+        background-color: #ffffff;
+        padding: 0 $space-xs;
+        border-radius: $space-xs;
+
+        &--width {
+            left: 0;
+            top: 50%;
+            transform: translateY(-100%);
+        }
+
+        &--length {
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    &__area {
+        position: absolute;
+        right: $space-xs;
+        bottom: $space-xs;
+        text-align: center;
+        font-size: $space-sm;
+        color: $color-text-secondary;
+    }
+
+    &__error-tooltip {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: $space-sm;
+        background-color: $color-white;
+        color: $color-red;
+        padding: $space-s $space-s;
+        border-radius: $space-s;
+        font-size: $space-sm;
+        white-space: nowrap;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        border: 1px solid $color-red;
+
+        animation: tooltipFadeIn 0.3s ease;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -$space-s;
+            border-width: $space-s;
+            border-style: solid;
+            border-color: $color-red transparent transparent transparent;
+        }
+    }
+
+    @keyframes tooltipFadeIn {
+        from {
+            opacity: 0;
+            transform: translate(-50%, 10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+    }
+}

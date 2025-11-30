@@ -1,0 +1,19 @@
+@use '../utils/variables' as *;
+
+@mixin decoration-card {
+    background-color: $color-background-card;
+    padding: $space-l;
+    border-radius: $space-xs;
+    box-shadow: $card-shadow;
+}
+
+%focus-input-style {
+    &:focus {
+        outline: none;
+    }
+
+    &:focus-visible {
+        border-color: $color-accent-primary;
+        box-shadow: 0 0 0 3px rgba($color-accent-primary, 0.3);
+    }
+}

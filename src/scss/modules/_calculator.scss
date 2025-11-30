@@ -1,0 +1,283 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.calculator {
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 100%;
+        gap: $space-xl;
+        position: relative;
+
+        @media (min-width: 50rem) {
+            grid-template-columns: 2fr 1fr;
+        }
+    }
+
+    &__body {
+        width: 100%;
+        @include decoration-card;
+    }
+
+    &__calculation {
+        width: 100%;
+        @include decoration-card;
+        position: sticky;
+        height: max-content;
+        top: $space-xl;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: $space-xl;
+    }
+
+    &__section {
+        border: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: $space-m;
+    }
+
+    &__section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid $color-grey-300;
+        margin-bottom: $space-m;
+        padding-bottom: $space-s;
+    }
+
+    &__reset-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: $space-xs;
+        border-radius: 50%;
+        color: $color-grey-500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+
+        svg {
+            width: $space-xl;
+            height: $space-xl;
+        }
+
+        &:hover {
+            color: $color-accent-remove;
+            transform: rotate(-180deg);
+        }
+
+        &:focus-visible {
+            outline: 2px solid $color-text-base;
+            outline-offset: 2px;
+        }
+    }
+
+    &__title {
+        display: inline-block;
+        padding: 0;
+        font-size: $space-m;
+        font-weight: $font-weight-bold;
+        color: $color-title-secondary;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    &__parameters {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: stretch;
+        flex-wrap: wrap;
+        gap: $space-m;
+        border-radius: $space-xs;
+        padding: $space-m;
+        border: 1px solid $color-grey-300;
+
+        @media(min-width:70rem) {
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+    }
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: $space-s;
+        width: 100%;
+    }
+
+    &__segments-container {
+        display: flex;
+        flex-direction: column;
+        gap: $space-m;
+    }
+
+    &__label {
+        color: $color-text-secondary;
+        font-size: $space-ssm;
+    }
+
+    &__input {
+        font-size: $space-ssm;
+        padding: $space-s $space-l;
+        border-radius: $space-xs;
+        border: 1px solid $color-border;
+        width: 100%;
+
+        @extend %focus-input-style;
+
+    }
+
+    &__buttons-panel {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        width: 100%;
+        gap: $space-s;
+    }
+
+    &__button {
+        display: block;
+        font-size: $font-size-button;
+        padding: $space-s $space-l;
+        border-radius: $space-xs;
+        color: $color-text-button-add;
+        border: 1px solid transparent;
+        outline: none;
+        cursor: pointer;
+        font-size: $space-ssm;
+
+        transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+        &[data-action="add-segment"] {
+            background-color: $color-background-button-add;
+            border-color: $color-accent-secondary;
+        }
+
+        &[data-action="subtract-segment"] {
+            background-color: $color-background-button-subtract;
+            border-color: $color-border;
+        }
+
+
+        &:hover {
+            transform: scale(1.02);
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $color-accent-primary;
+            outline-offset: 2px;
+        }
+
+    }
+
+    &__select {
+        display: block;
+        font-size: $space-ssm;
+        padding: $space-s $space-l;
+        border-radius: $space-xs;
+        border: 1px solid $color-border;
+        cursor: pointer;
+        max-width: 100%;
+        width: 100%;
+
+        @extend %focus-input-style;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    &__result {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item {
+        display: flex;
+        gap: $space-m;
+        align-items: baseline;
+        justify-content: space-between;
+        padding: $space-xs 0;
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:nth-last-child(2) {
+            border-bottom: none;
+        }
+
+        &--total {
+            font-variant-numeric: tabular-nums;
+            font-weight: $font-weight-bold;
+            color: $color-text-secondary;
+            text-align: right;
+            white-space: nowrap;
+
+            margin-top: $space-xl;
+            padding: $space-l;
+            background-color: rgba($color-green-olive, 0.15);
+            border-radius: $space-s;
+            border: none;
+            align-items: center;
+
+            flex-direction: column;
+
+            @media(min-width:65rem) {
+                flex-direction: row;
+            }
+
+            .calculator__title-item {
+                font-size: $space-m;
+                font-weight: $font-weight-bold;
+                color: $color-title-secondary;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .calculator__result-item {
+                font-size: $space-l;
+                color: $color-green-olive;
+                font-weight: $font-weight-bold;
+            }
+        }
+    }
+
+    &__title-item {
+        font-size: $space-sm;
+        font-weight: $font-weight-normal;
+        color: $color-grey-500;
+        margin: 0;
+    }
+
+    &__result-item {
+        display: inline-block;
+        text-align: right;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+        color: $color-text-secondary;
+    }
+
+    &__separator {
+        height: 1px;
+        background-color: $color-grey-200;
+        margin: $space-s 0;
+    }
+
+}
