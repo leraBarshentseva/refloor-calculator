@@ -247,6 +247,13 @@
                 flex-direction: row;
             }
 
+            .calculator__title-item {
+                font-weight: $font-weight-bold;
+                color: $color-title-secondary;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
             .calculator__result-item {
                 font-size: $space-l;
                 color: $color-green-olive;
