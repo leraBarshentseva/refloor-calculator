@@ -73,7 +73,7 @@
         }
 
         &:focus-visible {
-            outline: 2px solid $color-text-base;
+            outline: 2px solid $color-accent-primary;
             outline-offset: 2px;
         }
     }
@@ -95,9 +95,12 @@
         align-items: stretch;
         flex-wrap: wrap;
         gap: $space-m;
-        border-radius: $space-xs;
-        padding: $space-m;
-        border: 1px solid $color-grey-300;
+
+        @media(min-width:50rem) {
+            border-radius: $space-xs;
+            padding: $space-m;
+            border: 1px solid $color-grey-300;
+        }
 
         @media(min-width:70rem) {
             flex-direction: row;
@@ -121,11 +124,11 @@
 
     &__label {
         color: $color-text-secondary;
-        font-size: $space-ssm;
+        font-size: $space-m;
     }
 
     &__input {
-        font-size: $space-ssm;
+        font-size: $space-m;
         padding: $space-s $space-l;
         border-radius: $space-xs;
         border: 1px solid $color-border;
@@ -152,7 +155,7 @@
         border: 1px solid transparent;
         outline: none;
         cursor: pointer;
-        font-size: $space-ssm;
+        font-size: $space-m;
 
         transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
@@ -188,7 +191,7 @@
 
     &__select {
         display: block;
-        font-size: $space-ssm;
+        font-size: $space-m;
         padding: $space-s $space-l;
         margin-top: $space-s;
         border-radius: $space-xs;
@@ -244,35 +247,23 @@
                 flex-direction: row;
             }
 
-            .calculator__title-item {
-                font-size: $space-m;
-                font-weight: $font-weight-bold;
-                color: $color-title-secondary;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-            }
-
             .calculator__result-item {
                 font-size: $space-l;
                 color: $color-green-olive;
                 font-weight: $font-weight-bold;
+                display: inline-block;
+                text-align: right;
+                white-space: nowrap;
+                font-variant-numeric: tabular-nums;
             }
         }
     }
 
     &__title-item {
-        font-size: $space-sm;
+        font-size: $space-ssm;
         font-weight: $font-weight-normal;
         color: $color-grey-500;
         margin: 0;
-    }
-
-    &__result-item {
-        display: inline-block;
-        text-align: right;
-        white-space: nowrap;
-        font-variant-numeric: tabular-nums;
-        color: $color-text-secondary;
     }
 
     &__separator {

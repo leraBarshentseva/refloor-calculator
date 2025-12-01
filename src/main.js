@@ -117,6 +117,16 @@ const addSegment = (type) => {
     state.segments.push(newSegment);
     renderNewSegment(newSegment);
     updateResults();
+
+    const newBrick = DOM.containers.visualizer.querySelector(`[data-id="${newSegment.id}"]`);
+    
+    if (newBrick) {
+        const firstInput = newBrick.querySelector('input[name="width"]');
+
+        if (firstInput) {
+            firstInput.focus();
+        }
+    }
 };
 
 const renderNewSegment = (segment) => {
@@ -332,6 +342,24 @@ const init = () => {
 
     DOM.containers.visualizer.addEventListener('input', (e) => {
         handleSegmentInput(e);
+    });
+
+    DOM.containers.visualizer.addEventListener('focusin', (e) => {
+        const input = e.target.closest(`.${CLASSES.input}`);
+        if (!input) return;
+
+        if (input.value === '0') {
+            input.value = '';
+        }
+    });
+
+    DOM.containers.visualizer.addEventListener('focusout', (e) => {
+        const input = e.target.closest(`.${CLASSES.input}`);
+        if (!input) return;
+
+        if (input.value === '') {
+            input.value = '0';
+        }
     });
 
 };
